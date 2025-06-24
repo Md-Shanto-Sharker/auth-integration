@@ -1,23 +1,30 @@
-import React from "react";
+
 import { NavLink } from "react-router";
-import './Navbar.css'
+import "./Navbar.css";
+import { use } from "react";
+import { AuthContext } from "../context/AuthContex";
 const Navbar = () => {
-    const links = <>
-    
-    <li>
-        <NavLink to='/'>Home</NavLink>
-    </li>
-    <li>
-        <NavLink to='/login'>Login</NavLink>
-    </li>
-    <li>
-        <NavLink to='/register'>Register</NavLink>
-    </li>
-    {/* <li>
+
+  const userInfo = use(AuthContext);
+  console.log(userInfo);
+
+  
+  const links = (
+    <>
+      <li>
+        <NavLink to="/">Home</NavLink>
+      </li>
+      <li>
+        <NavLink to="/login">Login</NavLink>
+      </li>
+      <li>
+        <NavLink to="/register">Register</NavLink>
+      </li>
+      {/* <li>
         <NavLink></NavLink>
     </li> */}
-    
     </>
+  );
   return (
     <div className="navbar bg-base-100 shadow-sm">
       <div className="navbar-start">
@@ -49,9 +56,7 @@ const Navbar = () => {
         <a className="btn btn-ghost text-xl">daisyUI</a>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-          {links}
-        </ul>
+        <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end">
         <a className="btn">Button</a>
