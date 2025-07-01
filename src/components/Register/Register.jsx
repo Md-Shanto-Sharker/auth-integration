@@ -1,15 +1,14 @@
 import React, { use } from "react";
 import { Link } from "react-router";
 
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../Firebase/Firebase.init";
+// import { createUserWithEmailAndPassword } from "firebase/auth";
+// import { auth } from "../../Firebase/Firebase.init";
 import { AuthContext } from "../../context/AuthContext";
 
 const Register = () => {
-  const userInfo = use(AuthContext);
-  console.log(userInfo);
+  const { createUser } = use(AuthContext);
+  console.log(createUser);
 
-  
   const handleRegister = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
@@ -17,7 +16,15 @@ const Register = () => {
     const password = e.target.password.value;
     console.log("hello", name, email, password);
 
-    createUserWithEmailAndPassword(auth, email, password)
+    // createUserWithEmailAndPassword(auth, email, password)
+    //   .then((userCredential) => {
+    //     console.log(userCredential);
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
+
+    createUser(email, password)
       .then((userCredential) => {
         console.log(userCredential);
       })
